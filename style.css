@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background-color: #f7f7f7;
+  color: #333;
+}
+
+header {
+  background-color: #242424;
+  padding: 1rem;
+}
+code {
+  font-size: 0.95 rem;          /* Slightly larger text */
+  background-color: #f0f0f0;  /* Light grey background */
+  padding: 0.2rem 0.4rem;     /* Space around the text */
+  border-radius: 5px;         /* Rounded corners */
+  font-family: Consolas, monospace; /* Cleaner monospace font */
+}
+header nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 2rem;
+}
+
+header nav ul li a {
+  color: #f9f9f9;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+  color: #00ffa3;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.container img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+section {
+  padding: 3rem 0;
+}
+
+#intro {
+  background-image: url("../Images/pinkbg.jpg");
+  background-repeat: repeat;
+  background-size: auto;
+  background-position: top left;
+}
+#how-to-join {
+  background-color: #fff7e6;
+}
+
+#blog {
+  background-color: #f0f0ff;
+  text-align: left;
+}
+
+.blog-post {
+  margin-top: 1rem;
+  border-left: 4px solid #0077cc;
+  padding-left: 1rem;
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+#contact {
+  background-color: #e6ffe6;
+}
+
+.discord-link {
+  color: #0066ff;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+footer {
+  background-color: #222;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+.whitetext-outline {
+  color: white;
+  text-shadow: 
+    -0.5px -0.5px 0 black,
+     0.5px -0.5px 0 black,
+    -0.5px  0.5px 0 black,
+     0.5px  0.5px 0 black;
+}
