@@ -118,3 +118,7 @@ body {
 .site-footer a:hover {
   color: var(--accent);
 }
+
+.logo img {
+  height: 24px;
+}
