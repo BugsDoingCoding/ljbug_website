@@ -266,6 +266,30 @@ main {
   font-size: 0.85rem;
 }
 
+.server-status {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.status {
+  margin-top: 0.75rem;
+  font-weight: 500;
+}
+
+.status.loading {
+  color: var(--muted);
+}
+
+.status.online {
+  color: #2da44e; /* green */
+}
+
+.status.offline {
+  color: #d73a49; /* red */
+}
+
 /* =========================
    FOOTER
    ========================= */
