@@ -3,15 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ljbug — blog</title>
 
+  <title>ljbug — blog</title>
   <meta name="description" content="Personal blog and technical notes by ljbug.">
 
-  <!-- Google Font -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
+  <!-- Styles -->
   <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
@@ -19,9 +23,7 @@
 <header class="site-header">
   <div class="container">
     <div class="brand">
-      <a href="/" class="logo">
-        <img src="assets/logo.svg" aly="ljbug">
-      </a>   
+      <a href="/" class="logo">ljbug</a>
       <span class="tagline">blog</span>
     </div>
 
@@ -29,16 +31,7 @@
       <a href="#">Posts</a>
       <a href="#">Projects</a>
       <a href="#">About</a>
-    </nav>
-  </div>
-
-    <nav class="nav">
-      <a href="#">Posts</a>
-      <a href="#">Projects</a>
-      <a href="#">About</a>
-      <button id="theme-toggle" aria-label="Toggle dark mode">
-        ☾
-      </button>
+      <button id="theme-toggle" aria-label="Toggle dark mode">☾</button>
     </nav>
   </div>
 </header>
@@ -47,8 +40,8 @@
   <section class="intro">
     <h1>Writing, notes, and projects</h1>
     <p>
-      A personal blog covering technical experiments, ideas, and things worth
-      documenting.
+      A personal blog for technical experiments, documentation, and ideas worth
+      writing down.
     </p>
   </section>
 
@@ -57,8 +50,8 @@
       <h2><a href="#">Example post title</a></h2>
       <p class="meta">March 2025 · 5 min read</p>
       <p>
-        Short excerpt of the post goes here. This should be one or two sentences
-        that clearly summarize the content.
+        Short excerpt of the post goes here. This should clearly summarize what
+        the reader will learn.
       </p>
     </article>
 
@@ -66,12 +59,11 @@
       <h2><a href="#">Another post title</a></h2>
       <p class="meta">February 2025 · 3 min read</p>
       <p>
-        Another short excerpt. Keep these concise and readable.
+        Another concise excerpt. Keep these readable and to the point.
       </p>
     </article>
   </section>
 </main>
-  
 
 <footer class="site-footer">
   <div class="container">
@@ -80,10 +72,29 @@
     </p>
   </div>
 </footer>
-<script src="js/theme.js"></script>
+
+<script>
+(function () {
+  const storedTheme = localStorage.getItem("theme");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  if (storedTheme) {
+    document.documentElement.setAttribute("data-theme", storedTheme);
+  } else if (prefersDark) {
+    document.documentElement.setAttribute("data-theme", "dark");
+  }
+
+  const toggle = document.getElementById("theme-toggle");
+
+  toggle.addEventListener("click", () => {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+    document.documentElement.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+  });
+})();
+</script>
+
 </body>
 </html>
-
-
-
-
