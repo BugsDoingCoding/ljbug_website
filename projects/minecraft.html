@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Minecraft Server · ljbug.dev</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="brand">
+      <a href="/" class="logo">
+        <img src="/assets/logo.svg" alt="ljbug logo">
+      </a>
+      <span class="tagline">blog</span>
+    </div>
+
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/#projects">Side Projects</a>
+      <a href="/#about">About</a>
+      <button id="theme-toggle" aria-label="Toggle dark mode">☾</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <article class="project-page">
+    <header>
+      <h1>Minecraft Fabric Server</h1>
+      <p class="project-meta">Minecraft 1.21.1 · Fabric</p>
+    </header>
+
+    <div class="server-status" id="mc-status">
+      <span class="status-indicator"></span>
+      <span class="status-text">Checking server status…</span>
+    </div>
+
+    <section>
+      <h2>Server Information</h2>
+      <ul>
+        <li><strong>IP:</strong> <code>mc.cjones.dev</code></li>
+        <li><strong>Version:</strong> 1.21.1</li>
+        <li><strong>Loader:</strong> Fabric</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Installation Instructions</h2>
+      <ol>
+        <li>Install Fabric for Minecraft 1.21.1 from fabricmc.net</li>
+        <li>Download the mod pack from Google Drive</li>
+        <li>Extract into <code>.minecraft</code></li>
+      </ol>
+
+      <p class="note">
+        Correct path:<br>
+        <code>.minecraft/mods/*.jar</code>
+      </p>
+    </section>
+
+    <a href="/" class="project-link">← Back to home</a>
+  </article>
+</main>
+
+<script src="/js/theme.js"></script>
+<script src="/js/mc-status.js"></script>
+
+</body>
+</html>
