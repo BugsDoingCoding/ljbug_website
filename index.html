@@ -1,30 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <title>ljbug · blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>ljbug — blog</title>
-  <meta name="description" content="Personal blog and technical notes by ljbug.">
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-  
+
 <header class="site-header">
   <div class="container header-inner">
     <div class="brand">
       <a href="/" class="logo">
-        <img src="assets/logo.svg" alt="ljbug logo">
+        <img src="/assets/logo.svg" alt="ljbug logo">
       </a>
       <span class="tagline">blog</span>
     </div>
@@ -37,94 +26,64 @@
     </nav>
   </div>
 </header>
-  <article class="project-card">
-  <header class="project-header">
-    <h3>
-      <a href="/projects/minecraft.html">
-        Minecraft Fabric Server
-      </a>
-    </h3>
-    <span class="project-meta">Version 1.21.1 · Multiplayer</span>
-  </header>
 
-  <p>
-    A modded Fabric Minecraft server focused on exploration, building, and
-    long-term progression.
-  </p>
-
-  <a class="project-link" href="/projects/minecraft.html">
-    View details →
-  </a>
-</article>
 <main class="container">
-  <section class="intro">
-    <h1>Writing, notes, and projects</h1>
+
+  <section id="posts">
+    <h2>Posts</h2>
+    <p class="section-intro">
+      Notes, writeups, and technical observations.
+    </p>
     <p>
-      A personal blog for technical experiments, documentation, and ideas worth
-      writing down.
+      Content coming soon.
     </p>
   </section>
 
-  <section class="posts">
-    <article class="post">
-      <h2><a href="#">Example post title</a></h2>
-      <p class="meta">March 2025 · 5 min read</p>
-      <p>
-        Short excerpt of the post goes here. This should clearly summarize what
-        the reader will learn.
-      </p>
-    </article>
+  <section id="projects">
+    <h2>Side Projects</h2>
+    <p class="section-intro">
+      Small but ongoing projects I maintain outside of my main work.
+    </p>
 
-    <article class="post">
-      <h2><a href="#">Another post title</a></h2>
-      <p class="meta">February 2025 · 3 min read</p>
+    <article class="project-card">
+      <header class="project-header">
+        <h3>
+          <a href="/projects/minecraft.html">
+            Minecraft Fabric Server
+          </a>
+        </h3>
+        <span class="project-meta">Minecraft 1.21.1 · Multiplayer</span>
+      </header>
+
       <p>
-        Another concise excerpt. Keep these readable and to the point.
+        A modded Fabric Minecraft server focused on exploration, building,
+        and long-term progression.
       </p>
+
+      <ul class="project-details">
+        <li><strong>Server IP:</strong> <code>mc.cjones.dev</code></li>
+        <li><strong>Loader:</strong> Fabric</li>
+      </ul>
+
+      <a class="project-link" href="/projects/minecraft.html">
+        View details →
+      </a>
     </article>
   </section>
+
+  <section id="about">
+    <h2>About</h2>
+    <p class="section-intro">
+      Personal notes and side work by ljbug.
+    </p>
+    <p>
+      This site is a lightweight personal blog and project log.
+    </p>
+  </section>
+
 </main>
 
-<footer class="site-footer">
-  <div class="container">
-    <p>
-      © 2025 ljbug · <a href="#">RSS</a> · <a href="#">GitHub</a>
-    </p>
-  </div>
-</footer>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const root = document.documentElement;
-  const toggle = document.getElementById("theme-toggle");
-
-  if (!toggle) return;
-
-  const storedTheme = localStorage.getItem("theme");
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-  if (storedTheme) {
-    root.setAttribute("data-theme", storedTheme);
-  } else if (prefersDark) {
-    root.setAttribute("data-theme", "dark");
-  }
-
-  toggle.addEventListener("click", () => {
-    const current = root.getAttribute("data-theme");
-    const next = current === "dark" ? "light" : "dark";
-    root.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
-  });
-});
-</script>
-<script src="js/mc-status.js"></script>
-
+<script src="/js/theme.js"></script>
 
 </body>
 </html>
-
-
-
-
-
-
