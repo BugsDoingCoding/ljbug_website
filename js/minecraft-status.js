@@ -1,26 +1,32 @@
-const SERVER_ADDRESS = "mc.cjones.dev";
+const SERVER = "mc.cjones.dev";
 const statusEl = document.getElementById("mc-status");
+const motdEl = document.getElementById("mc-motd");
 
-fetch(`https://api.mcstatus.io/v2/status/java/${SERVER_ADDRESS}`)
-  .then(res => res.json())
-  .then(data => {
-    if (!statusEl) return;
+async function updateStatus() {
+  try {
+    const res = await fetch(`https://api.mcstatus.io/v2/status/java/${SERVER}`);
+    const data = await res.json();
 
-    if (data.online) {
-      const players = data.players.online;
-      const max = data.players.max;
-
-      statusEl.textContent = `🟢 Online — ${players}/${max} players`;
-      statusEl.classList.remove("loading");
-      statusEl.classList.add("online");
-    } else {
+    if (!data.online) {
       statusEl.textContent = "🔴 Offline";
-      statusEl.classList.remove("loading");
-      statusEl.classList.add("offline");
+      statusEl.className = "status offline";
+      motdEl.textContent = "";
+      return;
     }
-  })
-  .catch(() => {
+
+    statusEl.textContent =
+      `🟢 Online — ${data.players.online}/${data.players.max} players`;
+    statusEl.className = "status online";
+
+    if (data.motd?.clean) {
+      motdEl.textContent = data.motd.clean.join(" ");
+    }
+
+  } catch {
     statusEl.textContent = "⚠️ Unable to fetch server status";
-    statusEl.classList.remove("loading");
-    statusEl.classList.add("offline");
-  });
+    statusEl.className = "status offline";
+  }
+}
+
+updateStatus();
+setInterval(updateStatus, 60000); // refresh every 60s
