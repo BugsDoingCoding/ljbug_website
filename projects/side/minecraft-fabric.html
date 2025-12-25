@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Minecraft Fabric Server | ljbug</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">
+      <img src="/assets/logo.svg" alt="ljbug logo">
+    </a>
+    <nav class="nav">
+      <a href="/blog/">Blog</a>
+      <a href="/projects/current/">Current</a>
+      <a href="/projects/side/">Side</a>
+      <a href="/projects/past/">Past</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container project-page">
+
+  <h1>Minecraft Fabric Server</h1>
+  <p class="section-intro">
+    Modded Minecraft server focused on exploration, QoL improvements, and long-term worlds.
+  </p>
+
+  <!-- SERVER STATUS -->
+  <section class="server-status">
+    <h2>Live Server Status</h2>
+    <p><strong>IP:</strong> mc.cjones.dev</p>
+    <p><strong>Version:</strong> 1.21.1 (Fabric)</p>
+    <p id="mc-status" class="status loading">Checking server status…</p>
+    <p id="mc-motd" class="motd"></p>
+  </section>
+
+  <!-- INSTALLATION -->
+  <section>
+    <h2>Installation Instructions</h2>
+
+    <ol>
+      <li>
+        Install <strong>Fabric Loader for Minecraft 1.21.1</strong> from
+        <a href="https://fabricmc.net" target="_blank" rel="noopener">fabricmc.net</a>.
+      </li>
+      <li>Run the installer and select version <strong>1.21.1</strong>.</li>
+      <li>Launch Minecraft once using the new Fabric profile, then close it.</li>
+      <li>
+        Download the mod pack:
+        <a href="https://drive.google.com/drive/folders/1LqDSSVXtYZ407HbYoPULrIEEHeOHJf-p?usp=drive_link"
+           target="_blank" rel="noopener">
+          Google Drive Mod Pack
+        </a>
+      </li>
+    </ol>
+
+    <h3>Mod Folder Setup (Windows)</h3>
+    <ol>
+      <li>Press <strong>Win + R</strong>, type <code>%appdata%</code>, and press Enter.</li>
+      <li>Open <code>.minecraft</code>.</li>
+      <li>If a <code>mods</code> folder exists, delete it.</li>
+      <li>Move the downloaded ZIP into <code>.minecraft</code>.</li>
+      <li>Extract it so <code>.minecraft/mods/*.jar</code> exists.</li>
+      <li>Delete the ZIP file.</li>
+    </ol>
+
+    <p><strong>Correct structure:</strong></p>
+    <pre>.minecraft/mods/*.jar</pre>
+
+    <p><strong>Incorrect structures:</strong></p>
+    <pre>
+.minecraft/mods/mods/*.jar
+.minecraft/mods (1)/mods/*.jar
+    </pre>
+  </section>
+
+  <!-- MOD LIST -->
+  <section>
+    <h2>Mods</h2>
+
+    <h3>Vi’s Recommendations (bold = must-have)</h3>
+    <ul>
+      <li><strong>Biomes O’ Plenty</strong></li>
+      <li><strong>Chisel Reborn</strong></li>
+      <li>Waystones</li>
+      <li>Inventory Tweak</li>
+      <li>Stoneworks</li>
+      <li>Gardener’s Dream</li>
+      <li>Veinminer (crouch-only)</li>
+      <li>Tree Harvester (crouch-only)</li>
+    </ul>
+
+    <h3>Josh’s Recommendations</h3>
+    <ul>
+      <li>Towns and Towers</li>
+      <li>Leaves Be Gone</li>
+      <li>Villager Names</li>
+      <li>Spawn Animations</li>
+      <li>Bl4ck’s Sit</li>
+      <li>Formations Nether</li>
+      <li>Simple Copper Pipes</li>
+    </ul>
+
+    <h3>Optimization</h3>
+    <ul>
+      <li>Sodium</li>
+    </ul>
+
+    <h3>Required Compatibility Mods</h3>
+    <ul>
+      <li>Fabric API</li>
+      <li>GlitchCore</li>
+      <li>TerraBlender</li>
+      <li>Architectury API</li>
+      <li>CryonicLib</li>
+      <li>Formations</li>
+      <li>Puzzles Lib</li>
+      <li>Cloth Config API</li>
+      <li>Cristel Lib</li>
+      <li>Collective</li>
+      <li>Balm (Fabric)</li>
+      <li>Forge Config API Port</li>
+      <li>Anvian’s Lib</li>
+    </ul>
+  </section>
+
+  <a class="project-link" href="/projects/side/">← Back to Side Projects</a>
+
+</main>
+
+<footer class="site-footer">
+  <p class="footer-note">© 2025 ljbug</p>
+</footer>
+
+<script src="/js/minecraft-status.js"></script>
+</body>
+</html>
