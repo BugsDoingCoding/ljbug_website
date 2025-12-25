@@ -128,3 +128,16 @@ body {
 .logo img {
   height: 24px;
 }
+
+#theme-toggle {
+  margin-left: 1rem;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#theme-toggle:hover {
+  color: var(--accent);
+}
