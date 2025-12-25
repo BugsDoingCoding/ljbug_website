@@ -1,3 +1,7 @@
+/* ======================
+   Theme Variables
+   ====================== */
+
 :root {
   --bg: #ffffff;
   --text: #1f2937;
@@ -14,6 +18,10 @@
   --accent: #60a5fa;
 }
 
+/* ======================
+   Base Styles
+   ====================== */
+
 * {
   box-sizing: border-box;
 }
@@ -24,13 +32,26 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.65;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+a {
+  color: inherit;
+}
+
+/* ======================
+   Layout
+   ====================== */
+
 .container {
-  max-width: var(--max-width);
+  max-width: 900px;
   margin: 0 auto;
   padding: 0 1.25rem;
 }
+
+/* ======================
+   Header
+   ====================== */
 
 .site-header {
   border-bottom: 1px solid var(--border);
@@ -52,7 +73,6 @@ body {
 .logo {
   font-weight: 600;
   text-decoration: none;
-  color: var(--text);
 }
 
 .tagline {
@@ -63,13 +83,30 @@ body {
 .nav a {
   margin-left: 1.25rem;
   text-decoration: none;
-  color: var(--muted);
   font-weight: 500;
+  color: var(--muted);
 }
 
 .nav a:hover {
   color: var(--accent);
 }
+
+#theme-toggle {
+  margin-left: 1rem;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+#theme-toggle:hover {
+  color: var(--accent);
+}
+
+/* ======================
+   Intro
+   ====================== */
 
 .intro {
   padding: 3rem 0 2rem;
@@ -79,6 +116,10 @@ body {
   font-size: 2rem;
   margin-bottom: 0.75rem;
 }
+
+/* ======================
+   Posts
+   ====================== */
 
 .posts {
   margin-bottom: 4rem;
@@ -90,13 +131,12 @@ body {
 }
 
 .post h2 {
-  margin: 0 0 0.25rem;
   font-size: 1.25rem;
+  margin: 0 0 0.25rem;
 }
 
 .post h2 a {
   text-decoration: none;
-  color: var(--text);
 }
 
 .post h2 a:hover {
@@ -109,6 +149,10 @@ body {
   margin-bottom: 0.5rem;
 }
 
+/* ======================
+   Footer
+   ====================== */
+
 .site-footer {
   border-top: 1px solid var(--border);
   padding: 1.5rem 0;
@@ -117,7 +161,6 @@ body {
 }
 
 .site-footer a {
-  color: var(--muted);
   text-decoration: none;
 }
 
@@ -125,19 +168,22 @@ body {
   color: var(--accent);
 }
 
-.logo img {
-  height: 24px;
-}
+/* ======================
+   Responsive
+   ====================== */
 
-#theme-toggle {
-  margin-left: 1rem;
-  background: none;
-  border: none;
-  color: var(--muted);
-  font-size: 1rem;
-  cursor: pointer;
-}
+@media (max-width: 768px) {
+  .site-header .container {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem 0;
+  }
 
-#theme-toggle:hover {
-  color: var(--accent);
+  .nav {
+    margin-top: 0.5rem;
+  }
+
+  .nav a {
+    margin-left: 1rem;
+  }
 }
