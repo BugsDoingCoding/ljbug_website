@@ -189,7 +189,7 @@ a {
 }
 
 .logo img {
-  height: 500px;       /* Increase this value */
+  height: 150px;       /* Increase this value */
   width: auto;        /* Preserve aspect ratio */
   display: block;
 }
