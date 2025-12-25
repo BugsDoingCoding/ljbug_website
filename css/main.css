@@ -203,3 +203,70 @@ a {
   align-items: center;
   gap: 0.5rem;
 }
+.projects {
+  padding: 4rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.projects h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.section-intro {
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+
+.project-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  background: var(--bg);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.project-header h3 {
+  margin: 0;
+}
+
+.project-meta {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.project-details {
+  padding-left: 1.2rem;
+  margin: 1rem 0;
+}
+
+.project-details li {
+  margin-bottom: 0.25rem;
+}
+
+details summary {
+  cursor: pointer;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+details summary:hover {
+  color: var(--accent);
+}
+
+details ol {
+  margin-top: 0.75rem;
+  padding-left: 1.25rem;
+}
+
+.note {
+  margin-top: 0.75rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
