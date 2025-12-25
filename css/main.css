@@ -189,5 +189,17 @@ a {
 }
 
 .logo img {
-  height: 24px;
+  height: 100px;       /* Increase this value */
+  width: auto;        /* Preserve aspect ratio */
+  display: block;
+}
+
+.logo img {
+  height: clamp(36px, 6vw, 56px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
