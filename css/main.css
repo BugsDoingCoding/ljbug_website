@@ -194,9 +194,6 @@ a {
   display: block;
 }
 
-.logo img {
-  height: clamp(36px, 6vw, 56px);
-}
 
 .brand {
   display: flex;
