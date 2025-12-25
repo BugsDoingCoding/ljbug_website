@@ -177,6 +177,30 @@ section {
 }
 
 /* ================================
+   Hub links
+   ================================ */
+.hub-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.hub-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  font-weight: 500;
+  background: var(--bg);
+}
+
+.hub-card:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ================================
    Project Pages
    ================================ */
 
