@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Side Projects · ljbug</title>
+  <title>Side Projects | ljbug</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/css/main.css">
 </head>
@@ -10,54 +10,58 @@
 
 <header class="site-header">
   <div class="container header-inner">
-    <div class="brand">
-      <a href="/" class="logo">
-        <img src="/assets/logo.svg" alt="ljbug logo">
-      </a>
-    </div>
+    <a href="/" class="logo">
+      <img src="/assets/logo.svg" alt="ljbug logo">
+    </a>
     <nav class="nav">
       <a href="/blog/">Blog</a>
       <a href="/projects/current/">Current</a>
-      <a href="/projects/side/">Side</a>
+      <a href="/projects/side/" class="active">Side</a>
       <a href="/projects/past/">Past</a>
-      <a href="/about/">About</a>
-      <button id="theme-toggle">☾</button>
     </nav>
   </div>
 </header>
 
-<main class="container">
+<main class="container project-page">
+
   <h1>Side Projects</h1>
   <p class="section-intro">
-    Exploratory, personal, and experimental builds.
+    Long-running, exploratory, or infrastructure-focused work that evolves over time.
   </p>
 
-  <article class="project-card">
-    <h3>Minecraft Fabric Server</h3>
-    <p>Long-running modded server project.</p>
-    <a href="./files/">Project files →</a>
-  </article>
-  <section class="server-status">
-  <h2>Minecraft Server</h2>
+  <section class="project-grid">
 
-  <p>
-    <strong>Address:</strong> mc.cjones.dev<br>
-    <strong>Version:</strong> 1.21.1 (Fabric)
-  </p>
+    <!-- Minecraft Server Card -->
+    <article class="project-card">
+      <h2>Minecraft Fabric Server</h2>
+      <p>
+        Fabric 1.21.1 modded server focused on exploration, QoL, and curated world-gen.
+      </p>
 
-  <p id="mc-status" class="status loading">
-    Checking server status…
-  </p>
-</section>
+      <div class="server-preview">
+        <p id="mc-status" class="status loading">Checking server status…</p>
+        <ul id="mc-players" class="player-list"></ul>
+      </div>
+
+      <a class="project-link" href="/projects/side/minecraft-fabric.html">
+        View full setup →
+      </a>
+    </article>
+
+    <!-- Placeholder for future side projects -->
+    <article class="project-card muted">
+      <h2>More coming soon</h2>
+      <p>Additional side projects will appear here as they mature.</p>
+    </article>
+
+  </section>
+
 </main>
 
 <footer class="site-footer">
-  <div class="container footer-inner">
-    <p class="footer-note">© 2025 ljbug</p>
-  </div>
+  <p class="footer-note">© 2025 ljbug</p>
 </footer>
-  
+
 <script src="/js/minecraft-status.js"></script>
-<script src="/js/theme.js"></script>
 </body>
 </html>
