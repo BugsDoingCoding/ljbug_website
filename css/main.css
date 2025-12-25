@@ -1,16 +1,196 @@
+/* ================================
+   Root Theme Variables
+   ================================ */
+
+:root {
+  --bg: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --accent: #2563eb;
+}
+
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --border: #1e293b;
+  --accent: #60a5fa;
+}
+
+/* ================================
+   Base / Reset
+   ================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  background: var(--border);
+  padding: 0.15em 0.35em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* ================================
+   Layout Utilities
+   ================================ */
+
+.container {
+  max-width: 960px;
+  padding: 0 1.25rem;
+  margin: 0 auto;
+}
+
+/* ================================
+   Header
+   ================================ */
+
+.site-header {
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 64px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo img {
+  height: clamp(36px, 6vw, 56px);
+  width: auto;
+  display: block;
+}
+
+.tagline {
+  font-size: 0.85rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+/* ================================
+   Navigation
+   ================================ */
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav a {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.nav a:hover {
+  color: var(--accent);
+}
+
+#theme-toggle {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+#theme-toggle:hover {
+  color: var(--accent);
+}
+
+/* ================================
+   Sections
+   ================================ */
+
+section {
+  margin-top: 4rem;
+}
+
+.section-intro {
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+
+/* ================================
+   Projects (Index Page)
+   ================================ */
+
+.project-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  background: var(--bg);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.project-header h3 {
+  margin: 0;
+}
+
+.project-header h3 a:hover {
+  color: var(--accent);
+}
+
+.project-meta {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.project-details {
+  padding-left: 1.2rem;
+  margin: 1rem 0;
+}
+
+.project-details li {
+  margin-bottom: 0.25rem;
+}
+
+/* ================================
+   Project Pages
+   ================================ */
+
 .project-page {
   max-width: 720px;
   margin: 3rem auto;
 }
 
-.project-page h1,
-.project-page section {
-  margin-top: 2rem;
+.project-page h1 {
+  margin: 0 0 0.25rem 0;
 }
 
-.project-page h1 {
-  margin-bottom: 0.25rem;
-  margin-top: 0;
+.project-page section {
+  margin-top: 2rem;
 }
 
 .project-link {
@@ -18,9 +198,61 @@
   margin-top: 2rem;
   color: var(--accent);
   font-weight: 500;
-  text-decoration: none;
 }
 
 .project-link:hover {
   text-decoration: underline;
+}
+
+/* ================================
+   Server Status
+   ================================ */
+
+.server-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: gray;
+}
+
+.server-status.online .status-indicator {
+  background: #22c55e;
+}
+
+.server-status.offline .status-indicator {
+  background: #ef4444;
+}
+
+/* ================================
+   Details / Notes
+   ================================ */
+
+details summary {
+  cursor: pointer;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+details summary:hover {
+  color: var(--accent);
+}
+
+details ol {
+  margin-top: 0.75rem;
+  padding-left: 1.25rem;
+}
+
+.note {
+  margin-top: 0.75rem;
+  color: var(--muted);
+  font-size: 0.875rem;
 }
