@@ -275,18 +275,30 @@ section {
 .social-links {
   display: flex;
   gap: 1.25rem;
-  flex-wrap: wrap;
+  align-items: center;
 }
 
 .social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
   color: var(--accent);
   text-decoration: none;
-  font-weight: 500;
 }
 
-.social-links a:hover {
-  text-decoration: underline;
+.social-links svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  transition: opacity 0.2s ease;
 }
+
+.social-links a:hover svg {
+  opacity: 0.7;
+}
+
 
 .footer-note {
   opacity: 0.7;
