@@ -5,7 +5,7 @@ library(ggplot2)
 library(patchwork)   # Added ONLY to combine plots for publication
 
 # Set working directory to project folder
-setwd("C:/Users/leejc/OneDrive/Desktop/Metabolomics DP2")
+setwd("C:/your/file/directory")
 
 
 # 2. Create Data Frames ------------------------------------------------------
@@ -378,3 +378,4 @@ combined_vs_WT <- (plot3 + plot4) /
 # Display combined figures
 combined_phase_shift
 combined_vs_WT
+
