@@ -1,0 +1,258 @@
+# Metabolomics Analysis Pipeline (R)
+
+This repository contains a collection of **modular R scripts** for metabolomics and growth-curve analysis, developed for yeast-focused experimental datasets. Each script is designed to operate independently on well-defined input formats and produce publication-ready summaries and figures.
+
+The pipeline includes:
+- Untargeted metabolomics preprocessing and PCA
+- Amino acid heatmap analysis
+- Targeted metabolite workflows (IAA, Trp)
+- WT vs mutant statistical comparisons
+- Growth curve and relative growth rate analysis
+
+---
+
+## Conventions
+
+- **Wide format**: first column is an identifier; remaining columns are measurements or timepoints  
+- **Long format**: each row is one observation with explicit metadata columns  
+- **Phase encoding**: `_L` / `_S` or equivalent tokens parsed as Log / Stationary  
+
+All scripts assume **consistent, machine-parseable sample naming**.
+
+---
+
+## 1) `metaboanalyst_pca_preprocessing.R`
+
+### Purpose
+
+Preprocesses untargeted metabolomics data for **MetaboAnalyst-compatible PCA analysis**.
+
+### Functionality
+
+- Reads a feature-by-sample intensity table and a sample metadata table
+- Removes non-numeric rows embedded in feature tables
+- Sanitizes sample IDs to ensure consistent merging
+- Applies:
+  - zero replacement (min positive / 2)
+  - log2 transformation
+  - Pareto scaling
+- Runs PCA and generates PC1 vs PC2 plots
+- Exports MetaboAnalyst-ready feature and metadata CSVs
+
+### Input format
+
+**Feature table (CSV, wide format)**  
+- Column 1: feature identifier  
+- Columns 2..N: sample IDs  
+- Cells: numeric intensities  
+
+**Metadata table (CSV, long format)**  
+- Must contain column `Sample`  
+- Must contain ≥1 grouping column (used for PCA coloring)
+
+---
+
+## 2) `amino_acid_heatmaps_phaseShift_WTnorm.R`
+
+### Purpose
+
+Generates amino-acid heatmaps for **within-strain phase shifts** and **WT-normalized comparisons**.
+
+### Functionality
+
+- Splits data by growth medium
+- Computes mean amino acid abundance per `Group`
+- Produces:
+  1. `log2(Stationary / Log)` heatmaps within strains
+  2. `log2(Strain / WT)` heatmaps per phase
+- Removes WT after normalization
+- Combines panels using patchwork
+
+### Input format
+
+**Amino acid table (CSV, wide format)**  
+Required columns:
+- `Media`
+- `Group` formatted as `Strain_log` or `Strain_stationary`
+
+All remaining columns must be numeric amino acid abundances.
+
+---
+
+## 3) `targeted_metabolite_Trp_IAA_summary_foldchange.R`
+
+### Purpose
+
+Standardized workflow for **single-metabolite targeted analyses** (configured for Trp and IAA).
+
+### Functionality
+
+- Cleans raw Excel tables
+- Extracts:
+  - `Group` from sample prefix
+  - `Phase` from `_L` / `_S`
+- Produces:
+  - Mean ± SD / SE summaries
+  - log2 fold change vs phase-specific references
+  - Within-group phase contrasts: `|log2(Stationary / Log)|`
+
+### Input format
+
+**Targeted metabolite table (Excel, long format)**  
+- Sheet: `Fulldata`
+- Columns (in order):
+  1. Condition
+  2. Sample
+  3. Metabolite intensity (Trp or IAA)
+
+---
+
+## 4) `IAA_WT_vs_ego3KO_meanSE_ttests.R`
+
+### Purpose
+
+Focused **WT vs ego3-related genotype** comparison for IAA.
+
+### Functionality
+
+- Identifies all groups containing `ego3`
+- Computes mean ± SE by Group × Condition × Phase
+- Performs two-sided t-tests (KO vs WT)
+- Produces faceted bar plots with significance labels
+
+### Input format
+
+Same as targeted metabolite tables in section (3), with IAA as the value column.
+
+---
+
+## 5) `IAA_WT_log2FC_phase_and_condition_analysis.R`
+
+### Purpose
+
+Comprehensive **WT-normalized IAA analysis** across phases and conditions.
+
+### Functionality
+
+- Standardizes group, phase, and condition labels
+- Splits data into `YMD+M` and `YMD+AAA+M`
+- Computes phase-specific WT references
+- Calculates per-sample `log2(IAA / WT)`
+- Produces:
+  - WT-normalized log2FC boxplots with statistical testing
+  - Paired WT Log vs Stationary tests (Wilcoxon)
+  - Mean ± SE bar plots per condition
+  - Combined-condition summaries
+  - Focused WT vs ego3Δ comparisons
+
+### Input format
+
+**IAA table (Excel, long format)**  
+- Sheet: `Fulldata`
+- Columns: Condition, Sample, IAA  
+- Sample names must include:
+  - phase token (`_L` / `_S`)
+  - numeric replicate identifier (for paired testing)
+
+---
+
+## 6) `yeast_growthcurve_midpoint_endpoint_bars.R`
+
+### Purpose
+
+Summarizes growth curves using **endpoint and midpoint OD comparisons**.
+
+### Functionality
+
+- Reshapes wide growth curve data to long format
+- Computes:
+  - Endpoint OD (default: 24h)
+  - Midpoint OD (closest time to max_time / 2)
+- Produces bar plots with SD error bars
+
+### Input format
+
+**Growth curve table (CSV, wide format)**  
+- Column 1: strain ID  
+- Columns 2..N: timepoints (e.g., `X0`, `X2`, `X24`)  
+- Rows: replicate trajectories
+
+---
+
+## 7) `yeast_growthcurve_and_relative_growth_rate_general.R`
+
+### Purpose
+
+Generalized growth curve analysis with **relative growth rate computation**.
+
+### Functionality
+
+- Accepts CSV or Excel input
+- Parses numeric time values from column names
+- Produces:
+  1. Mean OD over time with SD/SE ribbons
+  2. Mean relative growth rate over time
+
+### Input format
+
+**Growth curve table (CSV or Excel, wide format)**  
+- Column 1: strain/group ID  
+- Columns 2..N: timepoints containing numeric tokens  
+- Rows: replicate trajectories
+
+---
+
+## 8) `SAM_analysis.R`
+
+### Purpose
+
+Implements **Significance Analysis of Microarrays (SAM)**–style differential analysis for high-dimensional datasets.
+
+### Functionality
+
+- Prepares expression-like data matrices
+- Performs group-based statistical testing
+- Identifies significantly altered features
+- Outputs ranked results suitable for downstream interpretation
+
+### Input format
+
+Depends on the specific SAM configuration used in the script; typically:
+- Numeric feature-by-sample matrix
+- Grouping vector or metadata column
+
+---
+
+## Notes on standardization
+
+- Sample naming conventions are critical; most scripts rely on regex-based parsing.
+- Targeted metabolite scripts assume exactly **three primary columns** (Condition, Sample, Value).
+- Growth curve scripts assume timepoints are encoded in column names.
+- If naming conventions change, only small helper functions require modification.
+
+## Citation and Use
+
+If you use any script from this repository in academic work, figures, presentations, or derivative analyses, please cite:
+
+Chua, Lee (2026). Metabolomics analysis scripts in R. GitHub repository.
+https://github.com/USERNAME/REPOSITORY_NAME
+
+BibTeX
+@misc{chua_metabolomics_2026,
+  author  = {Chua, Lee},
+  title   = {Metabolomics Analysis Scripts in R},
+  year    = {2026},
+  url     = {https://github.com/USERNAME/REPOSITORY_NAME}
+}
+
+Attribution in derivative scripts
+
+If you adapt or extend these scripts, please retain author attribution in the header:
+
+# Original author: Lee Chua
+# Source: https://github.com/USERNAME/REPOSITORY_NAME
+
+Use without license
+
+This repository is provided for research and educational use.
+Permission is granted to use and adapt the code with proper attribution to the author.      
